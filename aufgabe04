@@ -1,0 +1,48 @@
+
+//a) Schreiben Sie einen Mixin margin mit Variablen Argumenten:
+
+$margin5: 5px;
+$margin8: 8px;
+$margin10: 10px;
+$margin14: 14px;
+
+@mixin margin ($top, $right, $bottom, $left){
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+//b)T---------------------
+$tablet-width: 990px;
+$desktop-width: 1024px;
+
+@mixin breakpoint_tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin breakpoint_desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+.mobileInvisible {
+  display:none;
+  @include breakpoint_tablet(990px) {
+      display: block;
+  }
+}
+
+
+/*
+@mixin margin1 {
+  margin: $margin5;
+}
+@mixin margin2 {
+  margin: $margin5 $margin10;
+}
+@mixin margin3 {
+  margin: $margin5;
+}*/
